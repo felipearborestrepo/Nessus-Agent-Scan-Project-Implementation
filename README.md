@@ -32,92 +32,68 @@ _**Completion State:**_ Nessus Agent fully installed, agent group created, scan 
 
 We start by provisioning a **Windows 10 Pro** virtual machine on Azure:
 
-![VM Provisioned](https://github.com/user-attachments/assets/1-Created-VM.png)
+![1-Created VM](https://github.com/user-attachments/assets/eebd4c61-d000-4f7a-a6ad-49a0cb3b1065)
 
-Once provisioned, we downloaded and executed the PowerShell script to install the Nessus Agent and link it to Tenable.io:
-
-```powershell
-Invoke-WebRequest -Uri "https://sensor.cloud.tenable.com/install/agent/installer/ms-install-script.ps1" -OutFile "./ms-install-script.ps1"; & "./ms-install-script.ps1" -key "YOUR-KEY-HERE" -type "agent" -name "LABUSER-Agent-Group" -groups "LABUSER-Agent-Group"; Remove-Item -Path "./ms-install-script.ps1"
-This installed and configured the Nessus Agent:
-
-![Nessus Agent Installation](https://github.com/user-attachments/assets/9- Inside VM ran code in Powershell to Install the Agent.PNG)
-
-The agent was successfully linked to sensor.cloud.tenable.com.
-
-2. Nessus Agent Group Creation
+## 2. Nessus Agent Group Creation
 In Tenable.io, we created a new Agent Group called LABUSER-Agent-Group to logically organize the agent(s):
 
-![Agent Group Creation](https://github.com/user-attachments/assets/4- Added an Agent Group.png)
+![2- Tenable - Settings - Sensors](https://github.com/user-attachments/assets/450c7f5a-b5ef-4a37-b57f-a55678c3138f)
 
-3. Agent Registration and Linking
-In the Tenable.io portal, we confirmed the linked agent’s health and registration:
+![3- In Sensors page - Nessus Agents - Agents Group](https://github.com/user-attachments/assets/feb1f280-a997-4b9b-8605-e4529ee3949d)
 
-![Linked Agents](https://github.com/user-attachments/assets/8- Get Command from Linked Agents from Creating a new agent to run in the VM to install the Agent.png)
+![4- Added an Agent Group](https://github.com/user-attachments/assets/cc528698-b075-46cf-91a9-47649f84feae)
 
-We verified the agent group membership and health status:
+## 3. Nessus Agent Scan Creation
+Still in Tenable, I created a Basic Agent Scan including the Agent Group created before.
 
-![Linked Agent Verification](https://github.com/user-attachments/assets/12- Made sure the Tenable Nessus Agent was running.PNG)
+![5- Scans - Create Scan - Nessus Agent - Basic Agent Scan](https://github.com/user-attachments/assets/f83b88bd-6f8d-4206-9c55-05aee09df51b)
 
-4. Agent Trigger and Vulnerability Scan
-Trigger File Creation
-On the VM, we navigated to the Nessus Agent triggers folder:
+![6- Editing the Scan - Including the Group Agent](https://github.com/user-attachments/assets/8f38d4e0-d7cd-4d3e-b1d1-2812f73323c0)
 
-powershell
-Copy
-Edit
-cd \
-cd programdata
-cd Tenable
-cd 'Nessus Agent'
-cd nessus
-cd triggers
-New-Item -Name star.txt
-This star.txt file triggers the Nessus Agent to start a scan:
+**Set Scan Type to Trigger Scan, Selected Filename and then included the star.txt**
 
-![Trigger File Created](https://github.com/user-attachments/assets/10- Created the star.txt file to trigger the scan.PNG)
+![Screenshot 2025-06-06 135533](https://github.com/user-attachments/assets/71a59913-3201-47f5-adb2-f2724ffa26f7)
 
-After 10 minutes, the file was automatically deleted by the agent, indicating the scan had been triggered:
 
-![File Deleted Automatically](https://github.com/user-attachments/assets/13- After 10 minutes the the file was deleted.PNG)
+## 4. Ran Command from Tenable to intall the Agent inside the VM
+Got the Command from Tenable by creating a Linked Agent, copied and pasted in Powershell inside the VM to install the Agent
 
-5. Vulnerability Findings and Results
-We observed that the scan ran successfully and appeared in the Tenable.io Scans interface:
+![8- Get Command from Linked Agents from Creating a new agent to run in the VM to install the Agent](https://github.com/user-attachments/assets/46a7d650-f869-4962-9584-a00291a662ba)
 
-![Scan Triggered](https://github.com/user-attachments/assets/14- In Scans is showing as triggered.png)
+![9- Inside VM ran code in Powershell to Install the Agent](https://github.com/user-attachments/assets/ebede4ce-70a2-47a1-a747-a3c006fcdf4e)
 
-Vulnerabilities were identified:
+## 5. Created the file name star.txt in PowerShell inside the VM
+Used these commands to create the star.txt file so the Agent can detect, trigger and delete the file
 
-0 Critical
+![10- Created the star txt file to trigger the scan](https://github.com/user-attachments/assets/14ac16db-7459-4eae-b79e-f7fe960f9837)
 
-5 Medium
+![11- File showing in the folder](https://github.com/user-attachments/assets/738cd3dc-8823-4d46-89d7-0b4309a586d9)
 
-No Low vulnerabilities
+**Made sure that Tenable Nessus Agent was running in Services**
+![12- Made sure the Tenable Nessus Agent was running](https://github.com/user-attachments/assets/76ca8adf-d4e2-43a4-be95-f3ac539dec20)
 
-![Vulnerability Details](https://github.com/user-attachments/assets/15- Check the Results from Scan.png)
+## 6. File Deleted and Results
+**After 10 minutes the file star.txt was triggered and deleted from the VM**
 
-A detailed list of vulnerabilities by plugin was also available:
+![13- After 10 minutes the the file was deleted](https://github.com/user-attachments/assets/b340555f-a809-483e-85cd-0e4c16b7f3de)
 
-![Vulnerabilities by Plugin](https://github.com/user-attachments/assets/15- Check the Results from Scan.png)
+**In Tenable is showing that the scan was triggered**
 
-6. Final Summary
-This installed and configured the Nessus Agent:
+![14- In Scans is showing as triggered](https://github.com/user-attachments/assets/5e191783-8737-4071-93a4-c95a4be21b60)
 
-![Nessus Agent Installation](https://github.com/user-attachments/assets/9- Inside VM ran code in Powershell to Install the Agent.PNG)
+**The Results from the Scan**
 
-The agent was successfully linked to sensor.cloud.tenable.com.
+![15- Check the Results from Scan](https://github.com/user-attachments/assets/e5dffb82-a46a-424c-96cb-79c18e7a7959)
 
-✅ Successfully deployed and registered the Nessus Agent on the Windows VM.
-✅ Created an Agent Group in Tenable.io for scan management.
-✅ Confirmed the agent’s operational status and triggered a scan via the star.txt method.
-✅ Observed vulnerability findings in the Tenable.io console.
-✅ The process established a foundation for continuous vulnerability management using Nessus Agents.
 
-This project demonstrates a straightforward way to leverage Tenable’s agent-based scanning to monitor and secure cloud-based assets in an automated and controlled manner.
 
-7. Next Steps
-Incorporate the agent group into scheduled scans for ongoing vulnerability management.
 
-Implement a remediation plan for the vulnerabilities discovered during the scan.
 
-Explore automated integrations for asset health monitoring.
+
+
+
+
+
+
+
 
