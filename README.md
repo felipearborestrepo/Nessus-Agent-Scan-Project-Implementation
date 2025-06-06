@@ -1,44 +1,42 @@
--**Nessus Agent Scan Project Implementation**
+# Nessus Agent Scan Project Implementation
+
 In this project, we demonstrate the deployment of a Nessus Agent on a Windows VM in Azure, and the configuration of an authenticated vulnerability scan using Tenable’s cloud platform.
 
-Inception State: No Nessus Agent installed or configured, no scan group created.
+_**Inception State:**_ No Nessus Agent installed or configured, no scan group created.
 
-Completion State: Nessus Agent fully installed, agent group created, scan run, vulnerabilities identified, and initial assessment conducted.
+_**Completion State:**_ Nessus Agent fully installed, agent group created, scan run, vulnerabilities identified, and initial assessment conducted.
 
-Technology Utilized
-Tenable (Nessus Agent, Tenable.io Cloud platform)
+---
 
-Azure Virtual Machines (Windows 10 Pro)
+# Technology Utilized
+- Tenable (Nessus Agent, Tenable.io Cloud platform)
+- Azure Virtual Machines (Windows 10 Pro)
+- PowerShell (Agent installation and configuration)
+- Tenable Agent Groups (for grouping scan targets)
 
-PowerShell (Agent installation and configuration)
+---
 
-Tenable Agent Groups (for grouping scan targets)
+# Table of Contents
 
-Table of Contents
-VM and Nessus Agent Setup
+- [1. VM and Nessus Agent Setup](#1-vm-and-nessus-agent-setup)
+- [2. Nessus Agent Group Creation](#2-nessus-agent-group-creation)
+- [3. Agent Registration and Linking](#3-agent-registration-and-linking)
+- [4. Agent Trigger and Vulnerability Scan](#4-agent-trigger-and-vulnerability-scan)
+- [5. Vulnerability Findings and Results](#5-vulnerability-findings-and-results)
+- [6. Final Summary](#6-final-summary)
+- [7. Next Steps](#7-next-steps)
 
-Nessus Agent Group Creation
+---
 
-Agent Registration and Linking
+## 1. VM and Nessus Agent Setup
 
-Agent Trigger and Vulnerability Scan
+We start by provisioning a **Windows 10 Pro** virtual machine on Azure:
 
-Vulnerability Findings and Results
-
-Final Summary
-
-Next Steps
-
-1. VM and Nessus Agent Setup
-We start by provisioning a Windows 10 Pro virtual machine on Azure:
-
-
+![VM Provisioned](https://github.com/user-attachments/assets/1-Created-VM.png)
 
 Once provisioned, we downloaded and executed the PowerShell script to install the Nessus Agent and link it to Tenable.io:
 
-powershell
-Copy
-Edit
+```powershell
 Invoke-WebRequest -Uri "https://sensor.cloud.tenable.com/install/agent/installer/ms-install-script.ps1" -OutFile "./ms-install-script.ps1"; & "./ms-install-script.ps1" -key "YOUR-KEY-HERE" -type "agent" -name "LABUSER-Agent-Group" -groups "LABUSER-Agent-Group"; Remove-Item -Path "./ms-install-script.ps1"
 This installed and configured the Nessus Agent:
 
@@ -122,3 +120,4 @@ Incorporate the agent group into scheduled scans for ongoing vulnerability manag
 Implement a remediation plan for the vulnerabilities discovered during the scan.
 
 Explore automated integrations for asset health monitoring.
+
