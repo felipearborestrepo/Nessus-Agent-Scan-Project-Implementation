@@ -20,7 +20,7 @@ _**Completion State:**_ Nessus Agent fully installed, agent group created, scan 
 
 ## 1. VM and Nessus Agent Setup
 
-We start by provisioning a **Windows 10 Pro** virtual machine on Azure:
+**We start by provisioning a **Windows 10 Pro** virtual machine on Azure:**
 
 ![1-Created VM](https://github.com/user-attachments/assets/eebd4c61-d000-4f7a-a6ad-49a0cb3b1065)
 
@@ -34,7 +34,7 @@ We start by provisioning a **Windows 10 Pro** virtual machine on Azure:
 ![4- Added an Agent Group](https://github.com/user-attachments/assets/cc528698-b075-46cf-91a9-47649f84feae)
 
 ## 3. Nessus Agent Scan Creation
-Still in Tenable, I created a Basic Agent Scan including the Agent Group created before.
+**Still in Tenable, I created a Basic Agent Scan including the Agent Group created before**
 
 ![5- Scans - Create Scan - Nessus Agent - Basic Agent Scan](https://github.com/user-attachments/assets/f83b88bd-6f8d-4206-9c55-05aee09df51b)
 
@@ -46,14 +46,14 @@ Still in Tenable, I created a Basic Agent Scan including the Agent Group created
 
 
 ## 4. Ran Command from Tenable to intall the Agent inside the VM
-Got the Command from Tenable by creating a Linked Agent, copied and pasted in Powershell inside the VM to install the Agent
+**Got the Command from Tenable by creating a Linked Agent, copied and pasted in Powershell inside the VM to install the Agent**
 
 ![8- Get Command from Linked Agents from Creating a new agent to run in the VM to install the Agent](https://github.com/user-attachments/assets/46a7d650-f869-4962-9584-a00291a662ba)
 
 ![9- Inside VM ran code in Powershell to Install the Agent](https://github.com/user-attachments/assets/ebede4ce-70a2-47a1-a747-a3c006fcdf4e)
 
 ## 5. Created the file name star.txt in PowerShell inside the VM
-Used these commands to create the star.txt file so the Agent can detect, trigger and delete the file
+**Used these commands to create the star.txt file so the Agent can detect, trigger and delete the file**
 
 ![10- Created the star txt file to trigger the scan](https://github.com/user-attachments/assets/14ac16db-7459-4eae-b79e-f7fe960f9837)
 
