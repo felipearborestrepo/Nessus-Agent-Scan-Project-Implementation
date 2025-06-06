@@ -8,6 +8,8 @@ _**Completion State:**_ Nessus Agent fully installed, agent group created, scan 
 
 ![Screenshot 2025-06-06 102351](https://github.com/user-attachments/assets/b18b3150-3fdd-41b8-a487-23c6531d5324)
 
+![graphic_nessus_agent_technical_paper1](https://github.com/user-attachments/assets/1a7d14bf-377a-4f4a-94c1-50b02b6b3a79)
+
 # Technology Utilized
 - Tenable (Nessus Agent, Tenable.io Cloud platform)
 - Azure Virtual Machines (Windows 10 Pro)
