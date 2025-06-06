@@ -1,4 +1,4 @@
-Nessus Agent Scan Project Implementation
+-**Nessus Agent Scan Project Implementation**
 In this project, we demonstrate the deployment of a Nessus Agent on a Windows VM in Azure, and the configuration of an authenticated vulnerability scan using Tenable’s cloud platform.
 
 Inception State: No Nessus Agent installed or configured, no scan group created.
