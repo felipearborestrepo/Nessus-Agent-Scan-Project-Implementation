@@ -6,25 +6,13 @@ _**Inception State:**_ No Nessus Agent installed or configured, no scan group cr
 
 _**Completion State:**_ Nessus Agent fully installed, agent group created, scan run, vulnerabilities identified, and initial assessment conducted.
 
----
+![Screenshot 2025-06-06 102351](https://github.com/user-attachments/assets/b18b3150-3fdd-41b8-a487-23c6531d5324)
 
 # Technology Utilized
 - Tenable (Nessus Agent, Tenable.io Cloud platform)
 - Azure Virtual Machines (Windows 10 Pro)
 - PowerShell (Agent installation and configuration)
 - Tenable Agent Groups (for grouping scan targets)
-
----
-
-# Table of Contents
-
-- [1. VM and Nessus Agent Setup](#1-vm-and-nessus-agent-setup)
-- [2. Nessus Agent Group Creation](#2-nessus-agent-group-creation)
-- [3. Agent Registration and Linking](#3-agent-registration-and-linking)
-- [4. Agent Trigger and Vulnerability Scan](#4-agent-trigger-and-vulnerability-scan)
-- [5. Vulnerability Findings and Results](#5-vulnerability-findings-and-results)
-- [6. Final Summary](#6-final-summary)
-- [7. Next Steps](#7-next-steps)
 
 ---
 
@@ -35,7 +23,7 @@ We start by provisioning a **Windows 10 Pro** virtual machine on Azure:
 ![1-Created VM](https://github.com/user-attachments/assets/eebd4c61-d000-4f7a-a6ad-49a0cb3b1065)
 
 ## 2. Nessus Agent Group Creation
-In Tenable.io, we created a new Agent Group called LABUSER-Agent-Group to logically organize the agent(s):
+**In Tenable, I created a new Agent Group called LABUSER-Agent-Group to logically organize the agent(s):**
 
 ![2- Tenable - Settings - Sensors](https://github.com/user-attachments/assets/450c7f5a-b5ef-4a37-b57f-a55678c3138f)
 
